@@ -5,6 +5,7 @@
  */
 package com.frames1.repository;
 
+import com.frames1.model.AreaModel;
 import com.frames1.model.CarroModel;
 import com.frames1.util.ConectorHibernateUtil;
 import org.hibernate.Session;
@@ -14,13 +15,13 @@ import org.hibernate.Transaction;
  *
  * @author Frank
  */
-public class CarroRepository {
+public class AreaRepository {
     // metodo de excluir, editar, buscarpornome, buscarporid, buscatodos.
-    public void salvar(CarroModel carroModelo){
+    public void salvar(AreaModel areaModel){
         Session ses = ConectorHibernateUtil.getSessionFactory().openSession();
         Transaction tr = ses.beginTransaction();
         
-        ses.save(carroModelo);
+        ses.save(areaModel);
        
         tr.commit();
         ses.close();

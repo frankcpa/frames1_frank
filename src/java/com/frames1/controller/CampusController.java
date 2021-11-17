@@ -5,8 +5,8 @@
  */
 package com.frames1.controller;
 
-import com.frames1.model.CarroModel;
-import com.frames1.repository.CarroRepository;
+import com.frames1.model.CampusModel;
+import com.frames1.repository.CampusRepository;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -16,28 +16,28 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean
 @ViewScoped
-public class CarroController {
-    private CarroModel carroModel = new CarroModel();
-    private CarroRepository carroRepository = new CarroRepository();
+public class CampusController {
+    private CampusModel campusModel = new CampusModel();
+    private CampusRepository campusRepository = new CampusRepository();
     
     public void salvar(){
-        this.carroRepository.salvar(carroModel);
+        this.campusRepository.salvar(campusModel);
     }
 
-    public CarroModel getCarroModel() {
-        return carroModel;
+    public CampusModel getCampusModel() {
+        return campusModel;
     }
 
-    public void setCarroModel(CarroModel carroModel) {
-        this.carroModel = carroModel;
+    public void setCampusModel(CampusModel campusModel) {
+        this.campusModel = campusModel;
     }
 
-    public CarroRepository getCarroRepository() {
-        return carroRepository;
+    public CampusRepository getCampusRepository() {
+        return campusRepository;
     }
 
-    public void setCarroRepository(CarroRepository carroRepository) {
-        this.carroRepository = carroRepository;
+    public void setCampusRepository(CampusRepository campusRepository) {
+        this.campusRepository = campusRepository;
     }
 
 }

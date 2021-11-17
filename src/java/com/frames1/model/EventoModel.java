@@ -6,76 +6,61 @@
 package com.frames1.model;
 
 import java.io.Serializable;
+import java.sql.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author Frank
  */
 @Entity
-public class CarroModel implements Serializable{
+public class EventoModel implements Serializable{
     @Id
     @GeneratedValue
     private long id;
-    private String marca;
-    private String modelo;
-    private int anoFabricacao;
-    private int anoModelo;
-    private String observacao;
+    private String nome;
     
-    public void CarroModel(){
-        this.anoFabricacao = 0;
-        this.anoModelo = 0;
+    @Temporal(TemporalType.DATE)
+    private Date dataInicio;
+    
+    @Temporal(TemporalType.DATE)
+    private Date dataFim;
+    //private * IDCAMPUSSSSSS;
+
+    public String getNome() {
+        return nome;
     }
 
-    public String getMarca() {
-        return marca;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
-
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
-
-    public String getModelo() {
-        return modelo;
-    }
-
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
-    }
-
-    public int getAnoFabricacao() {
-        return anoFabricacao;
-    }
-
-    public void setAnoFabricacao(int anoFabricacao) {
-        this.anoFabricacao = anoFabricacao;
-    }
-
-    public int getAnoModelo() {
-        return anoModelo;
-    }
-
-    public void setAnoModelo(int anoModelo) {
-        this.anoModelo = anoModelo;
-    }
-
-    public String getObservacao() {
-        return observacao;
-    }
-
-    public void setObservacao(String observacao) {
-        this.observacao = observacao;
-    }
-
+    
     public long getId() {
         return id;
     }
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public Date getDataInicio() {
+        return dataInicio;
+    }
+
+    public void setDataInicio(Date dataInicio) {
+        this.dataInicio = dataInicio;
+    }
+
+    public Date getDataFim() {
+        return dataFim;
+    }
+
+    public void setDataFim(Date dataFim) {
+        this.dataFim = dataFim;
     }
     
 }

@@ -48,5 +48,9 @@ Contributor(s):
     <property name="hibernate.connection.password">nbuser</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
     <mapping class="com.frames1.model.CarroModel"/>
+    <mapping class="com.frames1.model.AreaModel"/>
+    <mapping class="com.frames1.model.CampusModel"/>
+    <mapping class="com.frames1.model.estadoModel"/>
+    <mapping class="com.frames1.model.cidadeModel"/>    
   </session-factory>
 </hibernate-configuration>
