@@ -6,9 +6,9 @@
 package com.frames1.controller;
 
 import com.frames1.model.AreaModel;
-import com.frames1.model.CarroModel;
 import com.frames1.repository.AreaRepository;
-import com.frames1.repository.CarroRepository;
+import java.util.ArrayList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -19,11 +19,26 @@ import javax.faces.bean.ViewScoped;
 @ManagedBean
 @ViewScoped
 public class AreaController {
+
     private AreaModel areaModel = new AreaModel();
     private AreaRepository areaRepository = new AreaRepository();
-    
-    public void salvar(){
+    private List<AreaModel> listaDeAreas = new ArrayList<>();
+
+    public AreaController() {
+        this.listaDeAreas = areaRepository.buscarTodos();
+    }
+
+    public void salvar() {
         this.areaRepository.salvar(areaModel);
+    }
+
+    public String editar(long idArea) {
+        return "editarArea.xhtml?faces-redirect=true&idArea=" + idArea;
+    }
+
+    public void remover(long idArea) {
+        this.areaRepository.remover(idArea);
+        this.listaDeAreas = areaRepository.buscarTodos();
     }
 
     public AreaModel getAreaModel() {
@@ -42,6 +57,12 @@ public class AreaController {
         this.areaRepository = areaRepository;
     }
 
+    public List<AreaModel> getListaDeAreas() {
+        return listaDeAreas;
+    }
 
+    public void setListaDeAreas(List<AreaModel> listaDeAreas) {
+        this.listaDeAreas = listaDeAreas;
+    }
 
 }

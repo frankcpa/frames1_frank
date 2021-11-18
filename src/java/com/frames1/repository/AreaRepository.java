@@ -6,8 +6,8 @@
 package com.frames1.repository;
 
 import com.frames1.model.AreaModel;
-import com.frames1.model.CarroModel;
 import com.frames1.util.ConectorHibernateUtil;
+import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -27,4 +27,25 @@ public class AreaRepository {
         ses.close();
     }
     
+    public List<AreaModel> buscarTodos(){
+        Session ses = ConectorHibernateUtil.getSessionFactory().openSession();
+        Transaction tr = ses.beginTransaction();
+        
+        List<AreaModel> listaDeAreas = ses.createQuery("from AreaModel").list();
+       
+        tr.commit();
+        ses.close();
+        return listaDeAreas;
+    }
+    
+    public void remover(Long idArea){
+        Session ses = ConectorHibernateUtil.getSessionFactory().openSession();
+        Transaction tr = ses.beginTransaction();
+        
+        AreaModel area = (AreaModel) ses.get(AreaModel.class, idArea);
+        ses.delete(area);
+       
+        tr.commit();
+        ses.close();
+    }
 }

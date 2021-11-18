@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition template="/template/template.xhtml">
+        <ui:define name="corpoDaPagina">
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-4">Listagem de Áreas</h1>
+                </div>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">#</th>
+                        <th scope="col">#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ui:repeat value="#{areaController.listaDeAreas}" var="areaValView">
+                        <tr>
+                            <td>#{areaValView.id}</td>
+                            <td>#{areaValView.nome}</td>
+                            <td>
+                                <h:form>
+                                    <h:commandButton action="#{areaController.editar(areaValView.id)}" class="btn btn-secondary" value="Editar"/>
+                                </h:form>
+                            </td>
+                            <td>
+                                <h:form>
+                                    <h:commandButton onclick="return confirm('Deseja realmente excluir o registro?')" action="#{areaController.remover(areaValView.id)}" class="btn btn-danger" value="Excluir"/>
+                                </h:form>
+                            </td>
+                        </tr>
+                    </ui:repeat> 
+                </tbody>
+            </table>
+        </ui:define>
+    </ui:composition>
+</html>
